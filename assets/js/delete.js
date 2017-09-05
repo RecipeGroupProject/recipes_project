@@ -31,8 +31,11 @@
 
    $(function(){
 
-   	//code goes here
-
    })
+
+     $('.selectpicker').selectpicker({
+        style: 'btn-info',
+        size: 4
+      });
 
  })();

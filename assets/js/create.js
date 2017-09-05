@@ -24,12 +24,41 @@
  *
  */
 
-(function(){
+ (function(){
 
-  $(function(){
+   $(function(){
 
-  	//code goes here
+     $("#addRecipeForm").validate({
+       errorClass: "text-danger",
+       rules: {
+       recipe_name: {
+         required: true,
+         minlength: 2
+       },
+       description: {
+         required: true,
+         minlength: 2
+       },
+       preparation_time: {
+         required: true,
+         minlength: 2
+       },
+       ingredients_list: {
+         required: true,
+         minlength: 2
+       },
+       instructions: {
+         required: true,
+         minlength: 2
+       },
+     },
+       messages: {
+       recipe_name: {
+         required: "success",
+         minlength: "unsuccessful"
+         },
+       }
+     })
+   })
 
-  })
-
-})();
+ })();
