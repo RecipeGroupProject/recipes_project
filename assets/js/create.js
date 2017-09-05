@@ -28,8 +28,43 @@
 
   $(function(){
 
-  	//code goes here
-
+        $("#addRecipeForm").validate({
+          rules: {
+            recipe_name: {
+              required: true,
+            },
+            recipe_des: {
+              required: true
+            },
+            perp_time: {
+              required: true
+            }
+            // },
+            // ingredient_list: {
+            //   // required: true
+            // }
+          },
+          messages: {
+            recipe_name: {
+              required: "We require a recipe name"
+            },
+            recipe_des: {
+              required: "We require a recipe description"
+            },
+            prep_time: {
+              required: "We require a preparation time"
+            }
+            // },
+            // isPremium: {
+            //   required: "We require a true or false"
+            // }
+          },
+          highlight: function (element) {
+               $(element).parent().addClass('error')
+           },
+           unhighlight: function (element) {
+               $(element).parent().removeClass('error')
+           }
+        });
   })
-
 })();

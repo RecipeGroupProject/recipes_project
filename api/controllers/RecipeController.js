@@ -7,37 +7,37 @@
 
 var Client = require('node-rest-client').Client;
 var client = new Client();
-var endpoint = "http://localhost:1337/student"
+var endpoint = "http://localhost:1337/recipes/"
 
 module.exports = {
 
   /**
-   * `StudentController.create()`
+   * `RecipeController.create()`
    */
-  create: function (req, res) {
+   add: function (req, res) {
 
-        if(req.method != "POST"){
-          return res.view('create');
-        }
+         if(req.method != "POST"){
+           return res.view('create');
+         }
 
-        var args = {
-            data: req.body,
-            headers: { "Content-Type": "application/json" }
-        };
+         var args = {
+             data: req.body,
+             headers: { "Content-Type": "application/json" }
+         };
 
-        client.post(endpoint, args, function (data, response) {
-            // return res.view('create', {success: { message: "Record added successfully"}});
-            if(response.statusCode != "201"){
-                req.addFlash("error", data.message.substring(data.message.indexOf("•")));
-                return res.redirect('/create');
-            }
+         client.post(endpoint, args, function (data, response) {
+             return res.view('create', {success: { message: "Record added successfully"}});
+             if(response.statusCode != "201"){
+                 req.addFlash("error", data.message.substring(data.message.indexOf("•")));
+                 return res.redirect('/create');
+             }
 
-            req.addFlash("success", "Record created successfully");
-            return res.redirect('/create');
+             req.addFlash("success", "Record created successfully");
+             return res.redirect('/create');
 
-        })
+         })
 
-  },
+   },
 
 
   /**
