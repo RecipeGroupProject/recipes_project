@@ -62,9 +62,9 @@ module.exports = {
     if(req.method != "POST"){
 
       client.get(endpoint, function (data, response) {
-        return res.view('update', {students: data});
+        return res.view('update', {recipes: data});
       }).on('error', function (err) {
-          return res.view('update', {error: { message: "There was an error getting the students"}});
+          return res.view('update', {error: { message: "There was an error getting the recipes"}});
       });
 
     }else{
@@ -74,7 +74,7 @@ module.exports = {
           headers: { "Content-Type": "application/json" }
       };
 
-      client.put(endpoint + "/" + req.body.id, args, function (data, response) {
+      client.put(endpoint + req.body.id, args, function (data, response) {
 
         if(response.statusCode != "200"){
             req.addFlash("error", data.message);
