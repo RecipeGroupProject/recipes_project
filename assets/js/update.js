@@ -100,7 +100,7 @@
          recipe_name: {
            required: true,
          },
-         recipe_des: {
+         description: {
            required: true
          },
          perp_time: {
