@@ -51,13 +51,7 @@
          required: true,
          minlength: 2
        },
-     },
-       messages: {
-       recipe_name: {
-         required: "success",
-         minlength: "Please enter at least 2 characters."
-         },
-       }
+      }
      })
    })
 
