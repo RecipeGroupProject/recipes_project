@@ -6,6 +6,16 @@
 
 <%- partial ('partials/statusmessage.ejs') %>
 
+<select class="selectpicker" name="student_id" data-live-search="true" data-header="Select a student" multiple data-actions-box="true" multiple title="Search">
+<% if(typeof students != "undefined" && students.length > 0){ %>
+  <% students.forEach(function(student){ %>
+    <option value="<%= student.student_id %>" data-icon="glyphicon glyphicon-user">
+      <%= student.last_name + ", " +  student.first_name %>
+    </option>
+  <% }) %>
+<% } %>
+</select>
+
 <h2>Recipes</h2>
 <table class="table table-striped table-bordered" id="studentTable" style="width:100%">
   <thead>
