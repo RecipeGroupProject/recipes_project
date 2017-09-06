@@ -43,7 +43,11 @@
          required: true,
          minlength: 2
        },
+<<<<<<< HEAD
        ingredients_list: {
+=======
+       ingredient_list: {
+>>>>>>> master
          required: true,
          minlength: 2
        },
@@ -55,7 +59,11 @@
        messages: {
        recipe_name: {
          required: "success",
+<<<<<<< HEAD
          minlength: "unsuccessful"
+=======
+         minlength: "Please enter at least 2 characters."
+>>>>>>> master
          },
        }
      })
