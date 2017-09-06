@@ -58,7 +58,7 @@
 
           currentRecipe = $(this).val()
 
-           $.get("http://localhost:1337/hero/" + currentRecipe, function(recipe){
+           $.get("http://localhost:1337/recipes/" + currentRecipe, function(recipe){
 
 
              $.each(recipe, function(key, val){
