@@ -14,7 +14,7 @@ module.exports = {
   /**
    * `RecipeController.create()`
    */
-   add: function (req, res) {
+   create: function (req, res) {
 
          if(req.method != "POST"){
            return res.view('create');
