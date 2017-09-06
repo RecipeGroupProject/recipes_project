@@ -24,47 +24,41 @@
  *
  */
 
-(function(){
+ (function(){
 
-  $(function(){
+   $(function(){
 
-        $("#addRecipeForm").validate({
-          rules: {
-            recipe_name: {
-              required: true,
-            },
-            recipe_des: {
-              required: true
-            },
-            perp_time: {
-              required: true
-            }
-            // },
-            // ingredient_list: {
-            //   // required: true
-            // }
-          },
-          messages: {
-            recipe_name: {
-              required: "We require a recipe name"
-            },
-            recipe_des: {
-              required: "We require a recipe description"
-            },
-            prep_time: {
-              required: "We require a preparation time"
-            }
-            // },
-            // isPremium: {
-            //   required: "We require a true or false"
-            // }
-          },
-          highlight: function (element) {
-               $(element).parent().addClass('error')
-           },
-           unhighlight: function (element) {
-               $(element).parent().removeClass('error')
-           }
-        });
-  })
-})();
+     $("#addRecipeForm").validate({
+       errorClass: "text-danger",
+       rules: {
+       recipe_name: {
+         required: true,
+         minlength: 2
+       },
+       description: {
+         required: true,
+         minlength: 2
+       },
+       preparation_time: {
+         required: true,
+         minlength: 2
+       },
+       ingredients_list: {
+         required: true,
+         minlength: 2
+       },
+       instructions: {
+         required: true,
+         minlength: 2
+       },
+     },
+       messages: {
+       recipe_name: {
+         required: "success",
+         minlength: "unsuccessful"
+         },
+       }
+     })
+   })
+
+ })();
