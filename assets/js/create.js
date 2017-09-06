@@ -43,7 +43,7 @@
          required: true,
          minlength: 2
        },
-       ingredients_list: {
+       ingredient_list: {
          required: true,
          minlength: 2
        },
@@ -55,7 +55,7 @@
        messages: {
        recipe_name: {
          required: "success",
-         minlength: "unsuccessful"
+         minlength: "Please enter at least 2 characters."
          },
        }
      })
