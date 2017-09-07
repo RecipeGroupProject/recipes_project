@@ -27,7 +27,7 @@ module.exports = {
 
          client.post(endpoint, args, function (data, response) {
              return res.view('create', {success: { message: "Record added successfully"}});
-             if(response.statusCode != "201"){
+             if(response.statusCode != "200"){
                  req.addFlash("error", data.message.substring(data.message.indexOf("•")));
                  return res.redirect('/create');
              }
@@ -116,7 +116,19 @@ module.exports = {
 
       })
     }
+  },
 
-  }
+
+    addingre: function (req, res) {
+
+      return res.view('addingre');
+    },
+
+    addinst: function (req, res) {
+
+      return res.view('addinst');
+    },
+
+
 
 };
