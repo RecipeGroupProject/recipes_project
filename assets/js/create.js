@@ -50,9 +50,10 @@
        instructions: {
          required: true,
          minlength: 2
-       },
+       }
       }
      })
-   })
+  })
+
 
  })();
