@@ -48,7 +48,7 @@ module.exports = {
     client.get(endpoint, function (data, response) {
         return res.view('read', {recipes: data});
     }).on('error', function (err) {
-        return res.view('read', {error: { message: "There was an error getting the students"}});
+        return res.view('read', {error: { message: "There was an error getting the recipes"}});
     });
 
   },
@@ -99,7 +99,7 @@ module.exports = {
       client.get(endpoint, function (data, response) {
         return res.view('delete', {students: data});
       }).on('error', function (err) {
-          return res.view('delete', {error: { message: "There was an error getting the students"}});
+          return res.view('delete', {error: { message: "There was an error getting the recipes"}});
       });
 
     }else{
