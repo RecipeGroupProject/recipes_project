@@ -7,7 +7,7 @@
 
 var Client = require('node-rest-client').Client;
 var client = new Client();
-var endpoint = "https://cook-h.herokuapp.com/recipes"
+var endpoint = "https://cook-h.herokuapp.com/recipes/"
 
 module.exports = {
 
@@ -33,7 +33,7 @@ module.exports = {
              }
 
              req.addFlash("success", "Record created successfully");
-             return res.redirect('/create');
+             return res.redirect('/addingre');
 
          })
 
@@ -46,7 +46,7 @@ module.exports = {
   read: function (req, res) {
 
     client.get(endpoint, function (data, response) {
-        return res.view('read', {students: data});
+        return res.view('read', {recipes: data});
     }).on('error', function (err) {
         return res.view('read', {error: { message: "There was an error getting the recipes"}});
     });
@@ -120,15 +120,16 @@ module.exports = {
 
 
     addingre: function (req, res) {
-
-      return res.view('addingre');
+      client.get(endpoint, function (data, response) {
+          return res.view('addingre', {recipes: data});
+      }).on('error', function (err) {
+          return res.view('addingre', {error: { message: "There was an error getting the students"}});
+      });
     },
 
     addinst: function (req, res) {
 
-      return res.view('addinst');
-    },
-
-
+      return res.view('addinst')
+    }
 
 };
