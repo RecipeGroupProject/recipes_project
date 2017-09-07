@@ -8,7 +8,7 @@
 <%- partial ('partials/statusmessage.ejs') %>
 
 <h2>Add Ingredients</h2>
-<form action="/addingre" method="PUT" class="form-horizontal" id="addIngForm">
+<form action="/addingre" method="POST" class="form-horizontal" id="addIngForm">
   <div class="form-group">
     <label for="recipe_name" class="col-sm-2 control-label">Ingredient Name:</label>
     <div class="col-sm-10">
@@ -48,13 +48,19 @@
       </tr>
     </thead>
     <tbody>
-    <% if(typeof recipes != "undefined" && recipes.length > 0){ %>
-      <% recipes.forEach(function(recipes){ %>
+    <% if(typeof ingredients != "undefined" && ingredients.length > 0){ %>
+      <% ingredients.forEach(function(ingredient){ %>
         <tr>
-          <td><%= recipes.ingredients.food_name %></td>
-          <td><%= recipes.ingredients.units %></td>
-          <td><%= recipes.ingredients.quantity %></td>
+          <td><%= ingredient.food_name %></td>
+          <td><%= ingredient.units %></td>
+          <td><%= ingredient.quantity %></td>
       <% }) %>
     <% } %>
     </tbody>
   </table>
+
+
+  Recipe recipe = recpRepo.findOne(id);
+  ingredient.setRecipe(recipe); // Most likely the missing part
+  ingrRepo.save(ingredient);
+  

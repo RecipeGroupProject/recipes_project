@@ -44,7 +44,6 @@ module.exports = {
    * `StudentController.read()`
    */
   read: function (req, res) {
-
     client.get(endpoint, function (data, response) {
         return res.view('read', {recipes: data});
     }).on('error', function (err) {
@@ -54,7 +53,7 @@ module.exports = {
   },
 
 
-   /**
+   /*
    * `StudentController.update()`
    */
   update: function (req, res) {
@@ -120,11 +119,33 @@ module.exports = {
 
 
     addingre: function (req, res) {
-      client.get(endpoint, function (data, response) {
-          return res.view('addingre', {recipes: data});
-      }).on('error', function (err) {
-          return res.view('addingre', {error: { message: "There was an error getting the students"}});
-      });
+
+    //   client.get(endpoint, function (data, response) {
+    //       return res.view('addingre', {recipes: data});
+    //   }).on('error', function (err) {
+    //       return res.view('addingre', {error: { message: "There was an error getting the students"}});
+    //   });
+    if(req.method != "POST"){
+      return res.view('addingre');
+    }
+
+    var args = {
+        data: req.body,
+        headers: { "Content-Type": "application/json" }
+    };
+
+    client.post(endpoint + "1/ingredients", args, function (data, response) {
+        return res.view('create', {success: { message: "Record added successfully"}});
+        if(response.statusCode != "200"){
+            req.addFlash("error", data.message.substring(data.message.indexOf("•")));
+            return res.redirect('/addingre');
+        }
+
+        req.addFlash("success", "Record created successfully");
+        return res.redirect('/addingre');
+
+    })
+
     },
 
     addinst: function (req, res) {
