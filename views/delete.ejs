@@ -33,3 +33,28 @@
     </div>
   </form>
 </div>
+
+
+<div>
+  <h2>Delete Items</h2>
+  <table class="table table-striped table-bordered" id="recipeTable2" style="width:100%">
+    <thead>
+      <tr>
+        <th>Ingredient Name</th>
+        <th>Unit of Measurement</th>
+        <th>Quantity</th>
+      </tr>
+    </thead>
+    <tbody>
+    <% if(typeof recipes.ingredients != "undefined" && recipes.length > 0){ %>
+      <% recipes.forEach(function(recipe){ %>
+        <tr data-id="<%= recipe.id %>">
+          <td class="recipe_title"><%= recipe.title %></td>
+          <td class="recipe_food_name"><%= recipe.ingredients.food_name %></td>
+          <td class="recipe_units"><%= recipe.ingredients.units %></td>
+        </tr>
+      <% }) %>
+    <% } %>
+    </tbody>
+  </table>
+</div>

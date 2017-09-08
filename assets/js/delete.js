@@ -1,41 +1,58 @@
-/**
- * Use bootstrap-select to enhance the functionality of dropdown on this page.
- *
- *
- * Here's what this you will need to do:
- *
- * 1. Inlclude the following DataTables css in layout.ejs
- *    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.11.2/css/bootstrap-select.min.css">
- *
- * 2. Include the following bootstrap-select JavaScript in layout.ejs
- *    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.11.2/js/bootstrap-select.min.js"></script>
- *
- * 3. Using the bootstrap-selct plugin render dropdown on the page
- *
- * 4. Use the live search functionality to make the dropdown searchable
- *
- * 5. Add the user glyphicons next to each student in the list
- *
- * 7. Add a menu header to the dropdown
- *
- * 8. Customize further with anything you find intersting
- *
- * Here's the documentation you need:
- * https://silviomoreto.github.io/bootstrap-select/
- * https://silviomoreto.github.io/bootstrap-select/examples/
- * http://getbootstrap.com/components/#glyphicons
- *
- */
+(function() {
 
- (function(){
+  $(function() {
 
-   $(function(){
+    var recipeID;
+    var description;
+    var preparation_time;
+    var instructions;
+    var ingredients;
 
-   })
 
-     $('.selectpicker').selectpicker({
-        style: 'btn-info',
-        size: 4
-      });
+    // $('.selectpicker').selectpicker({
+    //   style: 'btn-info',
+    //   size: 4
+    // });
 
- })();
+    $('#recipeTable2').DataTable({
+      dom: 'Bfrtip',
+      buttons: [
+        'copy', 'csv', 'excel', 'pdf', 'print'
+      ],
+      colReorder: true,
+      "scrollX": true
+    });
+
+
+  })
+
+  // $('.view-recipe').click(function() {
+  //   recipeID = $(this).parents('tr').data('id');
+  //   description = $('.recipe_description', $(this).parents('tr')).html();
+  //   preparation_time = $('.recipe_preparation_time', $(this).parents('tr')).html();
+  //
+  //
+  //
+  //   $.get("/recipes/" + recipeID, data => {
+  //     let recipe = data;
+  //
+  //     $("#blah").html('')
+  //     $(".modal-title").html('')
+  //     $(".modal-title").append(recipeID + " " + description)
+  //
+  //     $("#blah").append(`
+  //       <div class="dialog">
+  //         <p>Recipe: ${recipe.title}</p>
+  //         <p>Preparation Time: ${recipe.num_min}</p>`)
+  //
+  //     for (let i = 0; i < recipe.length; i++) {
+  //       $("#blah2").append(`
+  //         <p>Recipe: ${recipe.title}</p>
+  //         <p>Ingredients: ${recipes.ingredients[i].food_name}</p>
+  //         </div>
+  //       `)
+  //     }
+  //     $('#cardWindow').modal('show');
+  //   })
+  // })
+})();
