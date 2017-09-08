@@ -45,6 +45,7 @@
           <p>Recipe: ${recipe.title}</p>
           <p>Preparation Time: ${recipe.num_min}</p>`)
 
+
       for (let i = 0; i < recipe.length; i++) {
         $("#blah2").append(`
           <p>Recipe: ${recipe.title}</p>
