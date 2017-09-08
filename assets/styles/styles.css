@@ -13,3 +13,7 @@ body {
         max-width: 1024px;
     }
 }
+
+.is-hidden {
+  display: none !important;
+}

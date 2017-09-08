@@ -117,6 +117,15 @@ module.exports = {
     }
   },
 
+    getOne: function (req, res) {
+      if (req.method !== 'GET') {
+        throw new Error("This was a really bad decision on your part.");
+      }
+      client.get(endpoint+req.params.id, function (data, response) {
+        return res.send(data);
+      });
+    },
+
 
     addingre: function (req, res) {
 

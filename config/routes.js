@@ -48,6 +48,8 @@ module.exports.routes = {
   '/delete'  :'RecipeController.delete',
   '/addingre':'RecipeController.addingre',
   '/addinst' :'RecipeController.addinst',
+  '/addinst':'RecipeController.addinst',
+  '/recipes/:id':'RecipeController.getOne'
   '/:id'     :'RecipeController.passiveshow',
 
 };
