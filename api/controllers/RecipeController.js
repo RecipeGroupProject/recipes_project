@@ -179,5 +179,19 @@ module.exports = {
           return res.redirect('/addinst');
       })
       }
+    },
+
+
+    passiveshow: function (req, res) {
+      client.get(endpoint + req.params.id, function (data, response) {
+        res.send(data)
+      })
+    },
+
+    deleteIng: function (req, res)  {
+      clinet.delete(endpoint + req.params.id + "/ingredients/" + thisRecipe.ingredients.id , function (data, response){})
+
     }
+
+
   }

@@ -38,4 +38,31 @@
         size: 4
       });
 
+      $("#id").change(function() {
+
+        $.get('http://localhost:1337/' + $('#id').find("option:selected").val(), function (thisRecipe) {
+          // thisRecipe
+          let template
+          for (let i = 0; i < thisRecipe.length; i++) {
+           template += `
+           <td><form method="POST" action="/deleteIng"><button type="submit">Delete</button></form></td>
+           <td>${thisRecipe.food_name}</td>
+           <td>${thisRecipe.units}</td>
+           <td>${thisRecipe.quantity}</td>
+          `
+         }
+          $('#ingredientsTable tbody').html(template)
+
+          $('#ingredientsTable').DataTable({
+            dom: 'Bfrtip',
+              buttons: [
+                  'copy', 'csv', 'excel', 'pdf', 'print'
+              ],
+              colReorder: true,
+              scrollX: true
+          });
+        })
+
+      })
+
  })();
