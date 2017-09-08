@@ -44,7 +44,6 @@ module.exports = {
    * `StudentController.read()`
    */
   read: function (req, res) {
-
     client.get(endpoint, function (data, response) {
         return res.view('read', {recipes: data});
     }).on('error', function (err) {
@@ -54,7 +53,7 @@ module.exports = {
   },
 
 
-   /**
+   /*
    * `StudentController.update()`
    */
   update: function (req, res) {
@@ -97,14 +96,14 @@ module.exports = {
     if(req.method != "POST"){
 
       client.get(endpoint, function (data, response) {
-        return res.view('delete', {students: data});
+        return res.view('delete', {recipes: data});
       }).on('error', function (err) {
           return res.view('delete', {error: { message: "There was an error getting the recipes"}});
       });
 
     }else{
 
-      client.delete(endpoint + "/" + req.body.student_id, function (data, response) {
+      client.delete(endpoint + "/" + req.body.recipes.id, function (data, response) {
 
         if(response.statusCode != "200"){
             req.addFlash("error", data.message);
@@ -120,16 +119,20 @@ module.exports = {
 
 
     addingre: function (req, res) {
-      client.get(endpoint, function (data, response) {
-          return res.view('addingre', {recipes: data});
-      }).on('error', function (err) {
-          return res.view('addingre', {error: { message: "There was an error getting the students"}});
-      });
-    },
+
+      if(req.method != "POST"){
+
+        client.get(endpoint, function (data, response) {
+          return res.view('addingre', {recipes: data})
+        }).on('error', function (err) {
+            return res.view('addingre', {error: { message: "There was an error getting the recipes"}});
+        });
+
+}
+},
+
 
     addinst: function (req, res) {
-
-      return res.view('addinst')
+      return res.view('addingst')
     }
-
-};
+}

@@ -13,12 +13,12 @@
 <div style="text-align: center; padding-top:50px">
   <form action="/delete" method="POST">
     <div class="form-group">
-      <label for="recipe_id">SELECT A RECIPE TO DELETE</label><br/>
-      <select id="recipe_id" name="recipe_id" class="selectpicker" name="recipe_id" data-live-search="true" data-header="Select a recipe" multiple data-actions-box="true" multiple title="Available Recipes">
+      <label for="id">SELECT A RECIPE TO DELETE</label><br/>
+      <select id="recipe_id" name="id" class="selectpicker" data-live-search="true" data-header="Select a recipe" multiple data-actions-box="true" multiple title="Available Recipes">
       <% if(typeof recipes != "undefined" && recipes.length > 0){ %>
         <% recipes.forEach(function(recipe){ %>
-          <option value="<%= student.student_id %>">
-            <%= student.last_name + ", " +  student.first_name %>
+          <option value="<%= recipe.id %>">
+            <%= recipe.title%>
           </option>
         <% }) %>
       <% } %>
