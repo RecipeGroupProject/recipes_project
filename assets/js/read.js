@@ -1,57 +1,61 @@
-/**
- * Use DataTables to enhance the functionality of the table on this page.
- *
- * ** NOTE ** All extentsions are availabile in your code already.
- *            You only need to include the javascript and css listed below
- *
- * Here's what this you will need to do:
- *
- * 1. Inlclude the following DataTables css in layout.ejs
- *    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs/dt-1.10.12/b-1.2.2/b-print-1.2.2/cr-1.3.2/datatables.min.css"/>
- *
- * 2. Include the following DataTables JavaScript in layout.ejs
- *    <script type="text/javascript" src="https://cdn.datatables.net/v/bs/jszip-2.5.0/pdfmake-0.1.18/dt-1.10.12/b-1.2.2/b-html5-1.2.2/b-print-1.2.2/cr-1.3.2/datatables.min.js"></script>
- *
- * 3. Using the DataTables plugin render the table on the page as a DataTable
- *
- * 4. Use the buttons extention to enable the copy, csv, excel, pdf, and print
- *
- * 5. Use the colReorder Plugin to add the ability to reorder columns
- *
- * 6. The table should be able to scroll horizontal
- *
- * 7. Use any other features you find interesting
- *
- * Here's the documentation you need:
- * https://datatables.net/
- * https://datatables.net/extensions/buttons/examples/
- * https://datatables.net/extensions/colreorder/examples/
- * https://datatables.net/examples/basic_init/scroll_x.html
- *
- */
+(function() {
 
- (function(){
+  $(function() {
 
-   // 
-  //   document.addEventListener('DOMContentLoaded',function() {
-  //     document.querySelector('select[name="id"]').onchange=changeEventHandler;
-  //   },false);
-   //
-   //
-  //  $(function(){
-  //    if(!recipes.title) alert('Search');
-  //    else alert(recipes.title);
+    var recipeID;
+    var description;
+    var preparation_time;
+    var instructions;
+    var ingredients;
 
 
-      // $('#recipeTable').DataTable({
-      // dom: 'Bfrtip',
-      //   buttons: [
-      //       'copy', 'csv', 'excel', 'pdf', 'print'
-      //   ],
-      //   colReorder: true,
-      //   scrollX: true
+    $('.selectpicker').selectpicker({
+      style: 'btn-info',
+      size: 4
     });
 
-   })
+    $('table').DataTable({
+      dom: 'Bfrtip',
+      buttons: [
+        'copy', 'csv', 'excel', 'pdf', 'print'
+      ],
+      colReorder: true,
+      "scrollX": true
+  });
 
- })();
+
+  })
+
+  $('.view-recipe').click(function() {
+    recipeID = $(this).parents('tr').data('id');
+    description = $('.recipe_description', $(this).parents('tr')).html();
+    preparation_time = $('.recipe_preparation_time', $(this).parents('tr')).html();
+
+
+
+    $.get("/recipes/" + recipeID, data => {
+      let recipe = data;
+
+      $("#blah").html('')
+      $(".modal-title").html('')
+      $(".modal-title").append(recipeID + " " + description)
+
+      $("#blah").append(`
+        <div class="dialog">
+          <p>Recipe: ${recipe.title}</p>
+          <p>Preparation Time: ${recipe.num_min}</p>`)
+
+      for (let i = 0; i < recipe.length; i++) {
+        $("#blah2").append(`
+          <p>Recipe: ${recipe.title}</p>
+          <p>Description: ${recipes.description}</p>
+          <p>Preparation Time: ${recipes.num_min}</p>
+          <p>Instructions: ${recipes.instructions}</p>
+          <p>Ingredients: ${recipes.ingredients}</p>
+          </div>
+        `)
+      }
+      $('#cardWindow').modal('show');
+    })
+  })
+})();
