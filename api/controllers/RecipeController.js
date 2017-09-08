@@ -33,7 +33,7 @@ module.exports = {
              }
 
              req.addFlash("success", "Record created successfully");
-             return res.redirect('/addingre');
+             return res.redirect('/create');
 
          })
 
@@ -103,7 +103,7 @@ module.exports = {
 
     }else{
 
-      client.delete(endpoint + "/" + req.body.recipes.id, function (data, response) {
+      client.delete(endpoint + req.body.id, function (data, response) {
 
         if(response.statusCode != "200"){
             req.addFlash("error", data.message);
@@ -127,9 +127,23 @@ module.exports = {
         }).on('error', function (err) {
             return res.view('addingre', {error: { message: "There was an error getting the recipes"}});
         });
+      }
 
-}
-},
+
+      client.post(endpoint + req.body.id + "/ingredients", function (data, response) {
+
+          return res.view('create', {success: { message: "Record added successfully"}});
+
+          if(response.statusCode != "200"){
+              req.addFlash("error", data.message.substring(data.message.indexOf("•")));
+              return res.redirect('/addingre');
+          }
+
+          req.addFlash("success", "Record created successfully");
+          return res.redirect('/addingre');
+
+      })
+    },
 
 
     addinst: function (req, res) {
