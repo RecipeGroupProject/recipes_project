@@ -96,14 +96,14 @@ module.exports = {
     if(req.method != "POST"){
 
       client.get(endpoint, function (data, response) {
-        return res.view('delete', {students: data});
+        return res.view('delete', {recipes: data});
       }).on('error', function (err) {
           return res.view('delete', {error: { message: "There was an error getting the recipes"}});
       });
 
     }else{
 
-      client.delete(endpoint + "/" + req.body.student_id, function (data, response) {
+      client.delete(endpoint + "/" + req.body.recipes.id, function (data, response) {
 
         if(response.statusCode != "200"){
             req.addFlash("error", data.message);
@@ -120,37 +120,19 @@ module.exports = {
 
     addingre: function (req, res) {
 
-    //   client.get(endpoint, function (data, response) {
-    //       return res.view('addingre', {recipes: data});
-    //   }).on('error', function (err) {
-    //       return res.view('addingre', {error: { message: "There was an error getting the students"}});
-    //   });
-    if(req.method != "POST"){
-      return res.view('addingre');
-    }
+      if(req.method != "POST"){
 
-    var args = {
-        data: req.body,
-        headers: { "Content-Type": "application/json" }
-    };
+        client.get(endpoint, function (data, response) {
+          return res.view('addingre', {recipes: data})
+        }).on('error', function (err) {
+            return res.view('addingre', {error: { message: "There was an error getting the recipes"}});
+        });
 
-    client.post(endpoint + "1/ingredients", args, function (data, response) {
-        return res.view('create', {success: { message: "Record added successfully"}});
-        if(response.statusCode != "200"){
-            req.addFlash("error", data.message.substring(data.message.indexOf("•")));
-            return res.redirect('/addingre');
-        }
+}
+},
 
-        req.addFlash("success", "Record created successfully");
-        return res.redirect('/addingre');
-
-    })
-
-    },
 
     addinst: function (req, res) {
-
-      return res.view('addinst')
+      return res.view('addingst')
     }
-
-};
+}

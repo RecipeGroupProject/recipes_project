@@ -6,15 +6,6 @@
 
 <%- partial ('partials/statusmessage.ejs') %>
 
-<select class="selectpicker" name="recipe_id" data-live-search="true" data-header="Select a recipe" multiple data-actions-box="true" multiple title="Search">
-<% if(typeof recipes != "undefined" && recipes.length > 0){ %>
-  <% recipes.forEach(function(student){ %>
-    <option value="<%= student.student_id %>" data-icon="glyphicon glyphicon-user">
-      <%= student.last_name + ", " +  student.first_name %>
-    </option>
-  <% }) %>
-<% } %>
-</select>
 
 
 <div class="row">
@@ -39,19 +30,6 @@
     </tr>
   </thead>
   <tbody>
-  <% if(typeof recipes != "undefined" && recipes.length > 0){ %>
-    <% recipes.forEach(function(recipes){ %>
-      <tr>
-        <td><%= student.student_id %>
 
-
-        </td>
-        <td><%= student.first_name %></td>
-        <td><%= student.last_name %></td>
-        <td><%= student.start_date %></td>
-        <td><%= student.gpa %></td>
-      </tr>
-    <% }) %>
-  <% } %>
   </tbody>
 </table>
