@@ -32,15 +32,24 @@
 
  (function(){
 
-   $(function(){
+   // 
+  //   document.addEventListener('DOMContentLoaded',function() {
+  //     document.querySelector('select[name="id"]').onchange=changeEventHandler;
+  //   },false);
+   //
+   //
+  //  $(function(){
+  //    if(!recipes.title) alert('Search');
+  //    else alert(recipes.title);
 
-      $('#recipeTable').DataTable({
-      dom: 'Bfrtip',
-        buttons: [
-            'copy', 'csv', 'excel', 'pdf', 'print'
-        ],
-        colReorder: true,
-        scrollX: true
+
+      // $('#recipeTable').DataTable({
+      // dom: 'Bfrtip',
+      //   buttons: [
+      //       'copy', 'csv', 'excel', 'pdf', 'print'
+      //   ],
+      //   colReorder: true,
+      //   scrollX: true
     });
 
    })
