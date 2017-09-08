@@ -32,7 +32,7 @@
 
  (function(){
 
-   // 
+   //
   //   document.addEventListener('DOMContentLoaded',function() {
   //     document.querySelector('select[name="id"]').onchange=changeEventHandler;
   //   },false);
@@ -50,8 +50,8 @@
       //   ],
       //   colReorder: true,
       //   scrollX: true
-    });
+    // });
 
-   })
+  //  })
 
  })();

@@ -123,30 +123,61 @@ module.exports = {
       if(req.method != "POST"){
 
         client.get(endpoint, function (data, response) {
+
           return res.view('addingre', {recipes: data})
         }).on('error', function (err) {
             return res.view('addingre', {error: { message: "There was an error getting the recipes"}});
         });
-      }
+      } else {
+
+      var args = {
+          data: req.body,
+          headers: { "Content-Type": "application/json" }
+      };
 
 
-      // client.post(endpoint + req.body.id + "/ingredients", function (data, response) {
-      //
-      //     return res.view('create', {success: { message: "Record added successfully"}});
-      //
-      //     if(response.statusCode != "200"){
-      //         req.addFlash("error", data.message.substring(data.message.indexOf("•")));
-      //         return res.redirect('/addingre');
-      //     }
-      //
-      //     req.addFlash("success", "Record created successfully");
-      //     return res.redirect('/addingre');
-      //
-      // })
+      client.post(endpoint + req.body.id + "/ingredients", args, function (data, response) {
+
+
+          if(response.statusCode != "200"){
+              req.addFlash("error", data.message.substring(data.message.indexOf("•")));
+              return res.redirect('/addingre');
+          }
+
+          req.addFlash("success", "Record created successfully");
+          return res.redirect('/addingre');
+      })
+}
     },
 
 
     addinst: function (req, res) {
-      return res.view('addingst')
+      if(req.method != "POST"){
+
+        client.get(endpoint, function (data, response) {
+
+          return res.view('addinst', {recipes: data})
+        }).on('error', function (err) {
+            return res.view('addinst', {error: { message: "There was an error getting the recipes"}});
+        });
+      } else {
+
+      var args = {
+          data: req.body,
+          headers: { "Content-Type": "application/json" }
+      };
+
+
+      client.post(endpoint + req.body.id + "/instructions", args, function (data, response) {
+
+          if(response.statusCode != "200"){
+              req.addFlash("error", data.message.substring(data.message.indexOf("•")));
+              return res.redirect('/addinst');
+          }
+
+          req.addFlash("success", "Record created successfully");
+          return res.redirect('/addinst');
+      })
+      }
     }
-}
+  }
