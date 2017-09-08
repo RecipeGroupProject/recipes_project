@@ -130,19 +130,19 @@ module.exports = {
       }
 
 
-      client.post(endpoint + req.body.id + "/ingredients", function (data, response) {
-
-          return res.view('create', {success: { message: "Record added successfully"}});
-
-          if(response.statusCode != "200"){
-              req.addFlash("error", data.message.substring(data.message.indexOf("•")));
-              return res.redirect('/addingre');
-          }
-
-          req.addFlash("success", "Record created successfully");
-          return res.redirect('/addingre');
-
-      })
+      // client.post(endpoint + req.body.id + "/ingredients", function (data, response) {
+      //
+      //     return res.view('create', {success: { message: "Record added successfully"}});
+      //
+      //     if(response.statusCode != "200"){
+      //         req.addFlash("error", data.message.substring(data.message.indexOf("•")));
+      //         return res.redirect('/addingre');
+      //     }
+      //
+      //     req.addFlash("success", "Record created successfully");
+      //     return res.redirect('/addingre');
+      //
+      // })
     },
 
 
