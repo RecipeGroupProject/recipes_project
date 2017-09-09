@@ -38,17 +38,16 @@
 
             $("#details").html('')
             $(".modal-title").html('')
-            $(".modal-title").append(recipe.id + " " + recipe.description)
+            $(".modal-title").append(recipe.title)
 
             let detailsStuff = `
               <div class="dialog">
-                <p>Recipe: ${recipe.title}</p>
                 <p>Description: ${recipe.description}</p>
                 <p>Preparation Time: ${recipe.num_min}</p>
                 <p>Instructions: `
 
             for (instruction of recipe.instructions) {
-              detailsStuff += `${instruction.description}, `
+              detailsStuff += `${instruction.description} `
             }
 
             detailsStuff += `
@@ -56,7 +55,7 @@
                 <p>Ingredients: `
 
             for (ingredient of recipe.ingredients) {
-              detailsStuff += `${ingredient.food_name}, `
+              detailsStuff += `${ingredient.food_name} `
             }
 
             detailsStuff += `
@@ -67,3 +66,6 @@
             $('#details').append(detailsStuff)
             $('#cardWindow').modal('show');
         })
+      })
+
+})();
