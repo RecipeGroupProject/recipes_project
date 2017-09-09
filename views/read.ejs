@@ -14,10 +14,10 @@
       <thead>
         <tr>
           <th>Recipe Name</th>
-          <th class="is-hidden">Description</th>
+          <!--<th style="display: none">Description</th>-->
           <th>Preparation Time</th>
-          <th class="is-hidden">Ingredient List</th>
-          <th class="is-hidden">Instructions</th>
+          <!--<th style="display: none">Ingredient List</th>
+          <th style="display: none">Instructions</th>-->
           <th>View Recipe</th>
         </tr>
 
@@ -27,10 +27,10 @@
         <% recipes.forEach(function(recipe){ %>
           <tr data-id="<%= recipe.id %>">
             <td class="recipe_title"><%= recipe.title %></td>
-            <td class="is-hidden recipe_description"><%= recipe.description %></td>
+            <!--<td class="recipe_description" style="display: none"><%= recipe.description %></td>-->
             <td class="recipe_preparation_time"><%= recipe.num_min %></td>
-            <td class="is-hidden recipe_instructions"><%= recipe.instructions %></td>
-            <td class="is-hidden recipe_ingredients"><%= recipe.ingredients %></td>
+            <!--<td class="recipe_instructions" style="display: none"><%= recipe.instructions %></td>
+            <td class="recipe_ingredients" style="display: none"><%= recipe.ingredients %></td>-->
             <td class=""><a href="#" class="btn btn-info view-recipe">Recipe</a></td>
           </tr>
         <% }) %>
@@ -47,10 +47,7 @@
           <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
           <h4 class="modal-title">RECIPE</h4>
         </div>
-        <div class="modal-body">
-          <p id="blah"></p>
-          <p id="blah2"></p>
-          <p id="blah3"></p>
+        <div id="details" class="modal-body">
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
