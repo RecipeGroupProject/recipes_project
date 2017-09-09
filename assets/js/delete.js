@@ -36,11 +36,12 @@
 
      $('.selectpicker').selectpicker({
         style: 'btn-info',
-        size: 4
+        size: 6
       });
 
       $("#id").change(function() {
          $('#ingredientsTable tbody').html("")
+         $('#instructionsTable tbody').html("")
 
         $.get('http://localhost:1337/' + $('#id').find("option:selected").val(), function (thisRecipe) {
 
@@ -48,7 +49,7 @@
           for (let ingredient of thisRecipe.ingredients) {
            template += `
            <tr>
-              <td><form method="POST" action="recipes/${thisRecipe.id}/ingredient/${ingredient.id}/delete"><button type="submit">Delete</button></form></td>
+              <td class="buttonField"><form method="POST" action="recipes/${thisRecipe.id}/ingredient/${ingredient.id}/delete"><button type="submit" class="btn btn-danger">Delete</button></form></td>
               <td>${ingredient.food_name}</td>
               <td>${ingredient.units}</td>
               <td>${ingredient.quantity}</td>
@@ -67,7 +68,7 @@
          step += 1
           templateB += `
           <tr>
-             <td><form method="POST" action="recipes/${thisRecipe.id}/instruction/${instruction.id}/delete"><button type="submit">Delete</button></form></td>
+             <td class="buttonField"><form method="POST" action="recipes/${thisRecipe.id}/instruction/${instruction.id}/delete"><button type="submit" class="btn btn-danger">Delete</button></form></td>
              <td>${step}</td>
              <td>${instruction.description}</td>
 
