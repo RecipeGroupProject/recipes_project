@@ -17,3 +17,21 @@ body {
 .is-hidden {
   display: none !important;
 }
+
+
+.buttonField {
+  width: 0px;
+  padding: 0px;
+  margin: 0px;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.btn {
+  padding: 0px;
+  margin: 0px;
+}
+
+#logo {
+  width: 90px;
+}
