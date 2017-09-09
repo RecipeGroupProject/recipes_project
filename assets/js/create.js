@@ -28,6 +28,21 @@
 
    $(function(){
 
+
+     $("#addRecipe").click(function(e){
+
+       e.preventDefault()
+
+        $.ajax({
+        url: "http://localhost:1337/recipes/",
+        data: $("#addRecipeForm").serialize(),
+        type: 'POST',
+        success: function(result) {
+            alert("Successfully Changed")
+        }
+      })
+    })
+
      $("#addRecipeForm").validate({
        errorClass: "text-danger",
        rules: {
