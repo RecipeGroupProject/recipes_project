@@ -198,9 +198,52 @@ module.exports = {
     },
 
     deleteIng: function (req, res)  {
-      clinet.delete(endpoint + req.params.id + "/ingredients/" + req.params.ingid , function (data, response){})
 
-    }
+      if(req.method != "POST"){
 
+        client.get(endpoint, function (data, response) {
+          return res.view('delete', {recipes: data});
+        }).on('error', function (err) {
+            return res.view('delete', {error: { message: "There was an error getting the recipes"}});
+        });
 
+          }else{
+
+            client.delete(endpoint + req.params.id + "/ingredients/" + req.params.ingid , function (data, response){
+
+              if(response.statusCode != "200"){
+                  req.addFlash("error", data.message);
+                  return res.redirect('/delete');
+              }
+
+              req.addFlash("success", "Record deleted successfully");
+              return res.redirect('/delete');
+            })
+            }
+          },
+
+      deleteIns: function (req, res)  {
+
+        if(req.method != "POST"){
+
+          client.get(endpoint, function (data, response) {
+            return res.view('delete', {recipes: data});
+          }).on('error', function (err) {
+              return res.view('delete', {error: { message: "There was an error getting the recipes"}});
+          });
+
+            }else{
+
+              client.delete(endpoint + req.params.id + "/instructions/" + req.params.insid , function (data, response){
+                console.log(req.params.insid)
+                if(response.statusCode != "200"){
+                    req.addFlash("error", data.message);
+                    return res.redirect('/delete');
+                }
+
+                req.addFlash("success", "Record deleted successfully");
+                return res.redirect('/delete');
+              })
+              }
+            },
   }

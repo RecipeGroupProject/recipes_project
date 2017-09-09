@@ -14,7 +14,8 @@
   <form action="/delete" method="POST">
     <div class="form-group">
       <label for="id">SELECT A RECIPE TO DELETE</label><br/>
-      <select id="id" name="id" class="selectpicker" data-live-search="true" data-header="Select a recipe" multiple data-actions-box="true" multiple title="Available Recipes">
+      <select id="id" name="id" class="selectpicker" data-live-search="true" data-header="Select a recipe">
+      <option value="">Choose a Recipe</option>
       <% if(typeof recipes != "undefined" && recipes.length > 0){ %>
         <% recipes.forEach(function(recipe){ %>
           <option value="<%= recipe.id %>">
@@ -34,6 +35,7 @@
   </form>
 </div>
 
+<h2>Ingredients</h2>
 <table class="table table-striped table-bordered" id="ingredientsTable" style="width:100%">
   <thead>
     <tr>
@@ -41,6 +43,19 @@
       <th>I Name</th>
       <th>Units</th>
       <th>Q</th>
+    </tr>
+  </thead>
+  <tbody>
+  </tbody>
+</table>
+
+<h2>Instructions</h2>
+<table class="table table-striped table-bordered" id="instructionsTable" style="width:100%">
+  <thead>
+    <tr>
+      <th></th>
+      <th>Step</th>
+      <th>Description</th>
     </tr>
   </thead>
   <tbody>
