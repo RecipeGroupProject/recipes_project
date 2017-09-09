@@ -1,5 +1,6 @@
 (function() {
 
+
     $(function() {
 
       var recipeID;
@@ -66,5 +67,3 @@
             $('#details').append(detailsStuff)
             $('#cardWindow').modal('show');
         })
-    })
-})();
