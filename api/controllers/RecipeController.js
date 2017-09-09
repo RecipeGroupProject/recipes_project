@@ -15,6 +15,7 @@ module.exports = {
    * `RecipeController.create()`
    */
    create: function (req, res) {
+         sails.log(req)
 
          if(req.method != "POST"){
            return res.view('create');
@@ -24,6 +25,8 @@ module.exports = {
              data: req.body,
              headers: { "Content-Type": "application/json" }
          };
+
+        //  sails.log(req)
 
          client.post(endpoint, args, function (data, response) {
              return res.view('create', {success: { message: "Record added successfully"}});
