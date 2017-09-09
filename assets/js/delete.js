@@ -44,12 +44,12 @@
         $.get('http://localhost:1337/' + $('#id').find("option:selected").val(), function (thisRecipe) {
           // thisRecipe
           let template
-          for (let i = 0; i < thisRecipe.length; i++) {
+          for (let ingredient of thisRecipe.ingredients) {
            template += `
-           <td><form method="POST" action="/deleteIng"><button type="submit">Delete</button></form></td>
-           <td>${thisRecipe.food_name}</td>
-           <td>${thisRecipe.units}</td>
-           <td>${thisRecipe.quantity}</td>
+           <td><form method="POST" action="/:id/ingredient/${ingredient.id}/delete"><button type="submit">Delete</button></form></td>
+           <td>${ingredient.food_name}</td>
+           <td>${ingredient.units}</td>
+           <td>${ingredient.quantity}</td>
           `
          }
           $('#ingredientsTable tbody').html(template)

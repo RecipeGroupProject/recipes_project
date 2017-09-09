@@ -42,14 +42,15 @@ module.exports.routes = {
   *                                                                          *
   ***************************************************************************/
 
-  '/create'  :'RecipeController.create',
-  '/'        :'RecipeController.read',
-  '/update'  :'RecipeController.update',
-  '/delete'  :'RecipeController.delete',
-  '/addingre':'RecipeController.addingre',
-  '/addinst' :'RecipeController.addinst',
-  '/addinst':'RecipeController.addinst',
-  '/recipes/:id':'RecipeController.getOne'
-  '/:id'     :'RecipeController.passiveshow',
+  '/create'                                   :'RecipeController.create',
+  '/'                                         :'RecipeController.read',
+  '/update'                                   :'RecipeController.update',
+  '/delete'                                   :'RecipeController.delete',
+  '/addingre'                                 :'RecipeController.addingre',
+  '/addinst'                                  :'RecipeController.addinst',
+  '/addinst'                                  :'RecipeController.addinst',
+  '/recipes/:id/ingredient/:ingid/delete':  'RecipeController.deleteIng',
+  '/recipes/:id':                           'RecipeController.getOne',
+  '/:id'     :                              'RecipeController.passiveshow',
 
 };
