@@ -40,29 +40,44 @@
       });
 
       $("#id").change(function() {
+         $('#ingredientsTable tbody').html("")
 
         $.get('http://localhost:1337/' + $('#id').find("option:selected").val(), function (thisRecipe) {
-          // thisRecipe
+
           let template
           for (let ingredient of thisRecipe.ingredients) {
            template += `
-           <td><form method="POST" action="/:id/ingredient/${ingredient.id}/delete"><button type="submit">Delete</button></form></td>
-           <td>${ingredient.food_name}</td>
-           <td>${ingredient.units}</td>
-           <td>${ingredient.quantity}</td>
+           <tr>
+              <td><form method="POST" action="recipes/${thisRecipe.id}/ingredient/${ingredient.id}/delete"><button type="submit">Delete</button></form></td>
+              <td>${ingredient.food_name}</td>
+              <td>${ingredient.units}</td>
+              <td>${ingredient.quantity}</td>
+           <tr>
           `
          }
           $('#ingredientsTable tbody').html(template)
 
-          $('#ingredientsTable').DataTable({
-            dom: 'Bfrtip',
-              buttons: [
-                  'copy', 'csv', 'excel', 'pdf', 'print'
-              ],
-              colReorder: true,
-              scrollX: true
-          });
+
         })
+
+        $.get('http://localhost:1337/' + $('#id').find("option:selected").val(), function (thisRecipe) {
+         let step = 0
+         let templateB
+         for (let instruction of thisRecipe.instructions) {
+         step += 1
+          templateB += `
+          <tr>
+             <td><form method="POST" action="recipes/${thisRecipe.id}/instruction/${instruction.id}/delete"><button type="submit">Delete</button></form></td>
+             <td>${step}</td>
+             <td>${instruction.description}</td>
+
+          <tr>
+         `
+        }
+         $('#instructionsTable tbody').html(templateB)
+
+
+      })
 
       })
 

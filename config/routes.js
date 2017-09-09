@@ -49,7 +49,8 @@ module.exports.routes = {
   '/addingre'                                 :'RecipeController.addingre',
   '/addinst'                                  :'RecipeController.addinst',
   '/addinst'                                  :'RecipeController.addinst',
-  '/recipes/:id/ingredient/:ingid/delete':  'RecipeController.deleteIng',
+  '/recipes/:id/ingredient/:ingid/delete'     :'RecipeController.deleteIng',
+  '/recipes/:id/instruction/:insid/delete'     :'RecipeController.deleteIns',
   '/recipes/:id':                           'RecipeController.getOne',
   '/:id'     :                              'RecipeController.passiveshow',
 
