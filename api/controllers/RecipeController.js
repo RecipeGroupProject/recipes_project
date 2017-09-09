@@ -198,7 +198,7 @@ module.exports = {
     },
 
     deleteIng: function (req, res)  {
-      clinet.delete(endpoint + req.params.id + "/ingredients/" + thisRecipe.ingredients.id , function (data, response){})
+      clinet.delete(endpoint + req.params.id + "/ingredients/" + req.params.ingid , function (data, response){})
 
     }
 
