@@ -125,6 +125,8 @@ module.exports = {
         throw new Error("This was a really bad decision on your part.");
       }
       client.get(endpoint+req.params.id, function (data, response) {
+        sails.log(req.params.id)
+        sails.log(res)
         return res.send(data);
       });
     },
@@ -238,7 +240,11 @@ module.exports = {
             }else{
 
               client.delete(endpoint + req.params.id + "/instructions/" + req.params.insid , function (data, response){
+<<<<<<< HEAD
+
+=======
                 
+>>>>>>> Landen
                 if(response.statusCode != "200"){
                     req.addFlash("error", data.message);
                     return res.redirect('/delete');
