@@ -240,7 +240,11 @@ module.exports = {
             }else{
 
               client.delete(endpoint + req.params.id + "/instructions/" + req.params.insid , function (data, response){
+<<<<<<< HEAD
 
+=======
+                
+>>>>>>> Landen
                 if(response.statusCode != "200"){
                     req.addFlash("error", data.message);
                     return res.redirect('/delete');
